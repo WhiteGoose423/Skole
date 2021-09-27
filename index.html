@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Fade</title>
+  <style type="text/css">
+	<!-- 
+	  div { width: 1200px; height: 600px; border: solid black 2px; padding: 8px 5px; }
+    span { background: white; color: black; padding: 3px; }
+	-->
+	</style>
+  <script>
+     function endreFarge() {
+         var boks = document.getElementById("fargeklatt");
+            var x = event.clientX;   
+			   var y = event.clientY;   
+        var r = 0;
+        var g = 0;
+        var b = 0;
+      if (x > 600) {
+           r = 255;
+           b = 255 * ( (x-600) / 600);
+        }
+      else {
+           r = 255 * (x / 600);
+        }
+      if (y < 300) {
+        	  r = r * (y / 300);
+        }
+      else {
+           g = 255 * ( (y - 300) / 300);
+        }
+        r = parseInt(r);
+        g = parseInt(g);
+        b = parseInt(b);
+        var rgb = "rgb(" + r + ", " + g + ", " + b + ")";
+        boks.style.background = rgb;
+        var info = document.getElementById("infoboks");
+			  var coor = "Vannrett (X): " + x + ", Loddrett (Y): " + y;
+        infoboks.innerHTML = coor + "<br />" + rgb;
+     }
+  </script>
+</head>
+<body>
+
+	<div id="fargeklatt" onMouseMove="endreFarge()">
+  		<span id="infoboks"></span>
+  </div>
+
+</body>
+</html>
